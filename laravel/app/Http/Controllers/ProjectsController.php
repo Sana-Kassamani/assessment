@@ -55,5 +55,13 @@ class ProjectsController extends Controller
         ],200);
 
     }
-   
+    public function delete_project($id){
+        $project = project::find($id)->delete();
+        
+        return response()->json([
+            "message"=>"project deleted successfully",
+            "deleted_project"=>$project
+        ],201);
+
+    }
 }
