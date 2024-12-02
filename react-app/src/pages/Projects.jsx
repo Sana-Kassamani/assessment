@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Project from "../components/Project";
-
+import { projectContext } from "../context/ProjectContext";
 const Projects = () => {
+  const { projects, getProjects } = useContext(projectContext);
+
+  useEffect(() => {
+    getProjects();
+  }, []);
   return (
     <div className="projects-container">
       {projects.map((p) => (
