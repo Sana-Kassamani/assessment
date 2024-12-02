@@ -6,7 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use App\Models\Project;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -23,6 +23,10 @@ class User extends Authenticatable
         'requests_num'
     ];
 
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

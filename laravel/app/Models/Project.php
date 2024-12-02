@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+
 
 class Project extends Model
 {
@@ -10,4 +11,8 @@ class Project extends Model
         'name',
         'description',
     ];
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

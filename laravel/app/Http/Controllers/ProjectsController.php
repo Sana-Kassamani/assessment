@@ -8,7 +8,8 @@ use App\Models\Project;
 class ProjectsController extends Controller
 {
     public function get_projects(){
-        $project = Project::all();
+        $projects = Project::all();
+        $members=[];
         return response()->json([
             "projects"=>$projects
         ],200);
