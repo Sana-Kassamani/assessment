@@ -9,7 +9,11 @@ class ProjectsController extends Controller
 {
     public function get_projects(){
         $projects = Project::all();
-        $members=[];
+        foreach($projects as $project){
+            $one_project =Project::find($project->id);
+            $project->members= $one_project->users;
+        };
+        
         return response()->json([
             "projects"=>$projects
         ],200);
