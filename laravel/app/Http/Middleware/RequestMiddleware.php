@@ -5,7 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Auth;
+use App\Models\User;
+
 class RequestMiddleware
 {
     /**
@@ -15,8 +16,12 @@ class RequestMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = auth()->user;
-        
+        //not applicable for get requests
+        // get id from header
+        $user_id = $request->user_id;
+        $user = User::find($user_id);
+        $user->requests_num += 1;
+        $user->save();
         return $next($request);
     }
 }
