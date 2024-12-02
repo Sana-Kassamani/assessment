@@ -32,5 +32,28 @@ class ProjectsController extends Controller
 
     }
 
-    
+    public function update_project(Request $request,$id){
+        if(!$request->name || !$request->decription  )
+        {
+            return response()->json([
+                "message"=>"All fields are required"
+            ],400);
+        }
+        $project = project::find($id);
+        if(!$project)
+        {
+            return response()->json([
+                "message"=>"project not found"
+            ],404);
+        }
+        $project->name= $request->name;
+        $project->decription  = $request->decription ;
+        $project->save();
+        return response()->json([
+            "message"=>"project updated successfully",
+            "project"=>$project
+        ],200);
+
+    }
+   
 }
