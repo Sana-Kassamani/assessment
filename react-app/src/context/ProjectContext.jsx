@@ -9,7 +9,7 @@ const ProjectProvider = ({ children }) => {
 
   const getProjects = async () => {
     const apiUrl = apiRoutes.getProjects;
-    console.log(url);
+    console.log(apiUrl);
     const response = await axios.request({
       method: "GET",
       url: apiUrl,

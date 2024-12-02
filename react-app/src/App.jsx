@@ -3,18 +3,18 @@ import "./App.css";
 import Projects from "./pages/Projects";
 import ProjectProvider from "./context/ProjectContext";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
         <ProjectProvider>
           <Routes>
-            <Route path="/projects" element={<Projects />} />
+            <Route path="/" element={<Projects />} />
           </Routes>
         </ProjectProvider>
       </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
