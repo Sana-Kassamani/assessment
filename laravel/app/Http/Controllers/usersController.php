@@ -29,7 +29,33 @@ class UsersController extends Controller
             "message"=>"User created successfully",
             "user"=>$user
         ],201);
+
     }
+
+    public function update_user(Request $request,$id){
+        if(!$request->name || !$request->color )
+        {
+            return response()->json([
+                "message"=>"All fields are required"
+            ],400);
+        }
+        $user = User::find($id);
+        if(!$user)
+        {
+            return response()->json([
+                "message"=>"User not found"
+            ],404);
+        }
+        $user->name= $request->name;
+        $user->color = $request->color;
+        $user->save();
+        return response()->json([
+            "message"=>"User updated successfully",
+            "user"=>$user
+        ],201);
+
+    }
+
 
 
     
