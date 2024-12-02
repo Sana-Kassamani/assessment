@@ -52,10 +52,18 @@ class UsersController extends Controller
         return response()->json([
             "message"=>"User updated successfully",
             "user"=>$user
+        ],200);
+
+    }
+    public function delete_user($id){
+        $user = User::find($id)->delete();
+        
+        return response()->json([
+            "message"=>"User deleted successfully",
+            "deleted_user"=>$user
         ],201);
 
     }
-
 
 
     
